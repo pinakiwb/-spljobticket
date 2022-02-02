@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <!-- Bootstrap CSS -->
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" /> -->
+    <link rel="stylesheet" href="./css/bootstrap.min.css" />
+
+    <title>Job Ticket!</title>
+  </head>
+  <body>
+
+
+    <div class="alert alert-success mt-2 ml-1 mr-1" style="padding: 0 !important">
+      <div class="d-flex">
+        <div class="mt-2">
+          <!-- <img src="https://drive.google.com/uc?id=1YQ0rVJgTdieVptwMXJEHJsM2vYAltdT_" width="60" alt="" /> -->
+        </div>
+        <div>
+          <p class="" style="margin-bottom: 0 !important">
+            <strong>Saraswaty Press Limited</strong><br />
+            <small>(A Govt. of WB Enterprise)</small><br />
+            <small>11, B.T. Road, Kolkata 700056</small>
+          </p>
+        </div>
+        <div class="ml-auto mr-2">
+          <p class="mt-1">
+            <strong>Job Ticket</strong>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- main Form -->
+    <div id="frmJobTkt" class="mr-2 ml-2">
+        <div class="form-row border-top border-bottom border-primary">
+          <div class="form-group col-md-4 col-xl-4 col-sm-4">
+            <label for="job-no">Job No. <span class="text-danger">*</span></label>
+            <input type="text" class="form-control form-control-sm" id="job-no" />
+          </div>
+          <div class="form-group col-md-4 col-xl-4 col-sm-4">
+            <label for="ord-dt">Order Date <span class="text-danger">*</span></label>
+            <input type="date" class="form-control form-control-sm" id="ord-dt" />
+          </div>
+          <div class="form-group col-md-4 col-xl-4 col-sm-4">
+            <label for="del-dt">Delivery Date <span class="text-danger">*</span></label>
+            <input type="date" class="form-control form-control-sm" id="del-dt" />
+          </div>
+        </div>
+
+        <div class="form-row border-top border-primary mt-2">
+          <div class="form-group col-md-8 col-xl-8 col-sm-8">
+            <label for="cust-nm">Customer Name <span class="text-danger">*</span></label>
+            <input type="text" class="form-control form-control-sm" id="cust-nm" />
+          </div>
+          <div class="form-group col-md-4 col-xl-4 col-sm-4">
+            <label for="cust-no">Customer Number <span class="text-danger">*</span></label>
+            <input type="text" class="form-control form-control-sm" id="cust-no" />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-12 col-xl-12 col-sm-12">
+            <label for="cust-add">Customer Address <span class="text-danger">*</span></label>
+            <input type="text" class="form-control form-control-sm" id="cust-add" />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-9 col-xl-9 col-sm-9">
+            <label for="cont-per">Contact Person Name <span class="text-danger">*</span></label>
+            <input type="text" class="form-control form-control-sm" id="cont-per" />
+          </div>
+          <div class="form-group col-md-3 col-xl-3 col-sm-3">
+            <label for="cont-per-no">Contact Number</label>
+            <input type="text" class="form-control form-control-sm" id="cont-per-no"  />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-12 col-xl-12 col-sm-12">
+            <label for="del-add">Delivery Address <span class="text-danger">*</span></label>
+            <input type="text" class="form-control form-control-sm" id="del-add" />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-9 col-xl-9 col-sm-9">
+            <label for="del-cont-per">Delivery Contact Person </label>
+            <input type="text" class="form-control form-control-sm" id="del-cont-per" />
+          </div>
+          <div class="form-group col-md-3 col-xl-3 col-sm-3">
+            <label for="del-cont-per-no">Contact Number</label>
+            <input type="text" class="form-control form-control-sm" id="del-cont-per-no" />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-9 col-xl-9 col-sm-9">
+            <label for="purord-no">Purchase Order No. <span class="text-danger">*</span></label>
+            <input type="text" class="form-control form-control-sm" id="purord-no" />
+          </div>
+          <div class="form-group col-md-3 col-xl-3 col-sm-3">
+            <label for="purord-dt">Purchase Order Dt. <span class="text-danger">*</span></label>
+            <input type="date" class="form-control form-control-sm" id="purord-dt" />
+          </div>
+        </div>
+
+        <div class="form-row border-bottom border-primary">
+          <div class="form-group col-md-4 col-xl-4 col-sm-4">
+            <label for="est-no">Estimate No.</label>
+            <input type="text" class="form-control form-control-sm" id="est-no" />
+          </div>
+          <div class="form-group col-md-4 col-xl-4 col-sm-4">
+            <label for="est-dt">Estimate Date</label>
+            <input type="date" class="form-control form-control-sm" id="est-dt" />
+          </div>
+          <div class="form-group col-md-4 col-xl-4 col-sm-4">
+            <label for="sls-exe">Sales Executive <span class="text-danger">*</span></label>
+            <input type="text" class="form-control form-control-sm" id="sls-exe" />
+          </div>
+        </div>
+
+        <!--  -->
+
+        <div class="form-row border-top border-primary">
+          <div class="form-group col-md-12 col-xl-12 col-sm-12">
+            <label for="job-title">Job Title</label>
+            <input type="text" class="form-control form-control-sm" id="job-title" />
+          </div>
+        </div>
+
+        <div class="text-center border-bottom border-primary">
+          <h5 class="text-primary">Job Description with Printing, Binding & Other Instructions</h5>
+        </div>
+
+        <!-- JOB DESCRIPTION -->
+        <div class="text-center">
+          <button type="button" class="btn btn-primary btn-sm mt-2 mb-2 align-middle" onclick="createRow();"> ADD ITEM </button>
+        </div>
+
+        <div class="table-responsive border rounded border-primary mt-2">
+          <table class="table table-sm table-bordered" id="table-itms">
+            <thead class="thead-light">
+              <tr class="text-center">
+                <th scope="col">Item</th>
+                <th scope="col"><small><strong>Qty<br>(Pcs.)</strong></small></th>
+                <th scope="col"><small><strong>Size</small></strong></th>
+                <th scope="col"><small><strong>Pgs</small></strong></th>
+                <th scope="col"><small><strong>Paper</small></strong></th>
+                <th scope="col"><small><strong>Printing</small></strong></th>
+                <th scope="col"><small><strong>Numbering</small></strong></th>
+                <th scope="col"><small><strong>Binding</small></strong></th>
+                <th scope="col"><small><strong>Packing</small></strong></th>
+              </tr>
+            </thead>
+            <tbody id="item-tbl">
+              <tr> 
+                  <td> <input type="text" class="form-control form-control-sm" id="i1" /> </td>
+                  <td> <input type="text" class="form-control form-control-sm" id="q1" /> </td>
+                  <td> <input type="text" class="form-control form-control-sm" id="s1" /> </td>
+                  <td> <input type="text" class="form-control form-control-sm" id="pg1" /> </td>
+                  <td> <input type="text" class="form-control form-control-sm" id="pa1" /> </td>
+                  <td> <input type="text" class="form-control form-control-sm" id="pr1" /> </td>
+                  <td> <input type="text" class="form-control form-control-sm" id="n1" /> </td>
+                  <td> <input type="text" class="form-control form-control-sm" id="b1" /> </td>
+                  <td> <input type="text" class="form-control form-control-sm" id="pk1" /> </td>
+              </tr>
+            </tbody>
+          </table>      
+        </div>
+
+        
+        <div class="form-row border-top border-primary mt-2">
+          <div class="form-group col-md-4 col-xl-4 col-sm-4">
+            <label for="type-by">Typesetting By</label>
+            <select id="type-by" class="form-control form-control-sm">
+              <option value="Party">Party</option>
+              <option value="Press">Press</option>
+            </select>
+          </div>
+          <div class="form-group col-md-4 col-xl-4 col-sm-4">
+            <label for="proof-by">Proof Reading By</label>
+            <select id="proof-by" class="form-control form-control-sm">
+              <option value="Party">Party</option>
+              <option value="Press">Press</option>
+            </select>
+          </div>
+          <div class="form-group col-md-4 col-xl-4 col-sm-4">
+            <label for="artwork-by">Artwork By</label>
+            <select id="artwork-by" class="form-control form-control-sm">
+              <option value="Party">Party</option>
+              <option value="Press">Press</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row border-bottom border-primary">
+          <div class="form-group col-md-6 col-xl-6 col-sm-6">
+            <label for="text-by">Text Paper to be provided by</label>
+            <select id="text-by" class="form-control form-control-sm">
+              <option value="Party">Party</option>
+              <option value="Press">Press</option>
+            </select>
+          </div>
+          <div class="form-group col-md-6 col-xl-6 col-sm-6">
+            <label for="cover-by">Cover to be provided by</label>
+            <select id="cover-by" class="form-control form-control-sm">
+              <option value="Party">Party</option>
+              <option value="Press">Press</option>
+            </select>
+          </div>
+        </div>
+
+        <!--  -->
+        <div class="text-center border-bottom border-primary pb-2 mr-2 ml-2 mt-2 mb-5">
+          <button type="submit" class="btn btn-success btn-lg" id="saveJobTicket">Save this Job Ticket</button>
+        </div>
+
+    </div>
+
+
+    <footer class="container">
+      <div class="alert alert-success">
+        <p class="text-center text-danger font-weight-bold pt-3">&copy; Confidential Team, SPL 2022</p>
+      </div>
+    </footer>
+
+    <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script> -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script> -->
+    <!-- <script src="https://unpkg.com/jspdf-autotable@3.5.23/dist/jspdf.plugin.autotable.js"></script> -->
+
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script src="./js/bootstrap.bundle.min.js"></script>
+    <script src="./js/jspdf.umd.min.js"></script>
+    <script src="./js/jspdf.plugin.autotable.js"></script>
+    
+
+    <script type="text/javascript">
+
+        let lineNo = 2;
+
+        //ADD 1 NEW ROW
+        const createRow = () => {
+          if(lineNo >= 8){
+            alert("Sorry! :( U can only add 7 Items/Ticket");
+          }else{
+            markup = `<tr> 
+                        <td> <input type="text" class="form-control form-control-sm" id="i${lineNo}" /> </td>
+                        <td> <input type="text" class="form-control form-control-sm" id="q${lineNo}" /> </td>
+                        <td> <input type="text" class="form-control form-control-sm" id="s${lineNo}" /> </td>
+                        <td> <input type="text" class="form-control form-control-sm" id="pg${lineNo}" /> </td>
+                        <td> <input type="text" class="form-control form-control-sm" id="pa${lineNo}" /> </td>
+                        <td> <input type="text" class="form-control form-control-sm" id="pr${lineNo}" /> </td>
+                        <td> <input type="text" class="form-control form-control-sm" id="n${lineNo}" /> </td>
+                        <td> <input type="text" class="form-control form-control-sm" id="b${lineNo}" /> </td>
+                        <td> <input type="text" class="form-control form-control-sm" id="pk${lineNo}" /> </td>
+                      </tr>`;
+            tableBody = $("#item-tbl");
+            tableBody.append(markup);
+            lineNo++;
+          }
+        }
+
+      $(document).ready( function () {
+
+        //CREATE AN ARRAY OF JOB-TICKET
+        $('#saveJobTicket').on('click', function(){
+          //collect all input node in the document
+          let inputsVal = document.getElementById("frmJobTkt");
+
+          //count number of inputs in the document obj.
+          let inputCtr = inputsVal.querySelectorAll('input').length;
+
+          //data array
+          let dataJob = [];
+          //data object
+          let dataObject = {};
+
+          for (let i = 0; i <= ( inputCtr - 1 ); i++) {
+            let inputId = inputsVal.querySelectorAll('input')[i]['id'];
+            let inputVal = document.getElementById(inputId).value;
+               
+            // load data into object
+            dataObject[inputId] = inputVal;
+          }
+
+          let typeBy    = document.getElementById('type-by').value;
+          let proofBy   = document.getElementById('proof-by').value;
+          let artworkBy = document.getElementById('artwork-by').value;
+          let textBy    = document.getElementById('text-by').value;
+          let coverBy   = document.getElementById('cover-by').value;
+
+          dataObject['typeBy']    = typeBy;
+          dataObject['proofBy']   = proofBy;
+          dataObject['artworkBy'] = artworkBy;
+          dataObject['textBy']    = textBy;
+          dataObject['coverBy']   = coverBy;
+
+          // push the object to Array
+          dataJob.push(dataObject);
+          
+          // count data
+          let dataLength = Object.keys(dataObject).length;
+
+          let dataTable = [];
+
+          //dataLength : 31-1 item entry, 36-2-item entry,... 41, 46, 51, 56, 61
+          switch(dataLength) {
+            case 31:
+              dataTable.push( [ dataJob[0]['i1'], dataJob[0]['q1'], dataJob[0]['s1'], dataJob[0]['pg1'], dataJob[0]['pa1'], dataJob[0]['pr1'], dataJob[0]['n1'], dataJob[0]['b1'], dataJob[0]['pk1'] ] );
+              break;
+
+            case 40:
+              dataTable.push( [ dataJob[0]['i1'], dataJob[0]['q1'], dataJob[0]['s1'], dataJob[0]['pg1'], dataJob[0]['pa1'], dataJob[0]['pr1'], dataJob[0]['n1'], dataJob[0]['b1'], dataJob[0]['pk1'] ],
+                              [ dataJob[0]['i2'], dataJob[0]['q2'], dataJob[0]['s2'], dataJob[0]['pg2'], dataJob[0]['pa2'], dataJob[0]['pr2'], dataJob[0]['n2'], dataJob[0]['b2'], dataJob[0]['pk2'] ]
+                            );
+              break;
+
+            case 49:
+              dataTable.push( [ dataJob[0]['i1'], dataJob[0]['q1'], dataJob[0]['s1'], dataJob[0]['pg1'], dataJob[0]['pa1'], dataJob[0]['pr1'], dataJob[0]['n1'], dataJob[0]['b1'], dataJob[0]['pk1'] ],
+                              [ dataJob[0]['i2'], dataJob[0]['q2'], dataJob[0]['s2'], dataJob[0]['pg2'], dataJob[0]['pa2'], dataJob[0]['pr2'], dataJob[0]['n2'], dataJob[0]['b2'], dataJob[0]['pk2'] ],
+                              [ dataJob[0]['i3'], dataJob[0]['q3'], dataJob[0]['s3'], dataJob[0]['pg3'], dataJob[0]['pa3'], dataJob[0]['pr3'], dataJob[0]['n3'], dataJob[0]['b3'], dataJob[0]['pk3'] ]
+                            );
+              break;
+
+            case 58:
+              dataTable.push( [ dataJob[0]['i1'], dataJob[0]['q1'], dataJob[0]['s1'], dataJob[0]['pg1'], dataJob[0]['pa1'], dataJob[0]['pr1'], dataJob[0]['n1'], dataJob[0]['b1'], dataJob[0]['pk1'] ],
+                              [ dataJob[0]['i2'], dataJob[0]['q2'], dataJob[0]['s2'], dataJob[0]['pg2'], dataJob[0]['pa2'], dataJob[0]['pr2'], dataJob[0]['n2'], dataJob[0]['b2'], dataJob[0]['pk2'] ],
+                              [ dataJob[0]['i3'], dataJob[0]['q3'], dataJob[0]['s3'], dataJob[0]['pg3'], dataJob[0]['pa3'], dataJob[0]['pr3'], dataJob[0]['n3'], dataJob[0]['b3'], dataJob[0]['pk3'] ],
+                              [ dataJob[0]['i4'], dataJob[0]['q4'], dataJob[0]['s4'], dataJob[0]['pg4'], dataJob[0]['pa4'], dataJob[0]['pr4'], dataJob[0]['n4'], dataJob[0]['b4'], dataJob[0]['pk4'] ]
+                            );
+              break;
+
+            case 67:
+              dataTable.push( 
+                              [ dataJob[0]['i1'], dataJob[0]['q1'], dataJob[0]['s1'], dataJob[0]['pg1'], dataJob[0]['pa1'], dataJob[0]['pr1'], dataJob[0]['n1'], dataJob[0]['b1'], dataJob[0]['pk1'] ],
+                              [ dataJob[0]['i2'], dataJob[0]['q2'], dataJob[0]['s2'], dataJob[0]['pg2'], dataJob[0]['pa2'], dataJob[0]['pr2'], dataJob[0]['n2'], dataJob[0]['b2'], dataJob[0]['pk2'] ],
+                              [ dataJob[0]['i3'], dataJob[0]['q3'], dataJob[0]['s3'], dataJob[0]['pg3'], dataJob[0]['pa3'], dataJob[0]['pr3'], dataJob[0]['n3'], dataJob[0]['b3'], dataJob[0]['pk3'] ],
+                              [ dataJob[0]['i4'], dataJob[0]['q4'], dataJob[0]['s4'], dataJob[0]['pg4'], dataJob[0]['pa4'], dataJob[0]['pr4'], dataJob[0]['n4'], dataJob[0]['b4'], dataJob[0]['pk4'] ],
+                              [ dataJob[0]['i5'], dataJob[0]['q5'], dataJob[0]['s5'], dataJob[0]['pg5'], dataJob[0]['pa5'], dataJob[0]['pr5'], dataJob[0]['n5'], dataJob[0]['b5'], dataJob[0]['pk5'] ]
+                            );
+              break;
+
+            case 76:
+              dataTable.push( 
+                              [ dataJob[0]['i1'], dataJob[0]['q1'], dataJob[0]['s1'], dataJob[0]['pg1'], dataJob[0]['pa1'], dataJob[0]['pr1'], dataJob[0]['n1'], dataJob[0]['b1'], dataJob[0]['pk1'] ],
+                              [ dataJob[0]['i2'], dataJob[0]['q2'], dataJob[0]['s2'], dataJob[0]['pg2'], dataJob[0]['pa2'], dataJob[0]['pr2'], dataJob[0]['n2'], dataJob[0]['b2'], dataJob[0]['pk2'] ],
+                              [ dataJob[0]['i3'], dataJob[0]['q3'], dataJob[0]['s3'], dataJob[0]['pg3'], dataJob[0]['pa3'], dataJob[0]['pr3'], dataJob[0]['n3'], dataJob[0]['b3'], dataJob[0]['pk3'] ],
+                              [ dataJob[0]['i4'], dataJob[0]['q4'], dataJob[0]['s4'], dataJob[0]['pg4'], dataJob[0]['pa4'], dataJob[0]['pr4'], dataJob[0]['n4'], dataJob[0]['b4'], dataJob[0]['pk4'] ],
+                              [ dataJob[0]['i5'], dataJob[0]['q5'], dataJob[0]['s5'], dataJob[0]['pg5'], dataJob[0]['pa5'], dataJob[0]['pr5'], dataJob[0]['n5'], dataJob[0]['b5'], dataJob[0]['pk5'] ],
+                              [ dataJob[0]['i6'], dataJob[0]['q6'], dataJob[0]['s6'], dataJob[0]['pg6'], dataJob[0]['pa6'], dataJob[0]['pr6'], dataJob[0]['n6'], dataJob[0]['b6'], dataJob[0]['pk6'] ]
+                            );
+              break;
+
+            case 85:
+              dataTable.push(
+                              [ dataJob[0]['i1'], dataJob[0]['q1'], dataJob[0]['s1'], dataJob[0]['pg1'], dataJob[0]['pa1'], dataJob[0]['pr1'], dataJob[0]['n1'], dataJob[0]['b1'], dataJob[0]['pk1'] ],
+                              [ dataJob[0]['i2'], dataJob[0]['q2'], dataJob[0]['s2'], dataJob[0]['pg2'], dataJob[0]['pa2'], dataJob[0]['pr2'], dataJob[0]['n2'], dataJob[0]['b2'], dataJob[0]['pk2'] ],
+                              [ dataJob[0]['i3'], dataJob[0]['q3'], dataJob[0]['s3'], dataJob[0]['pg3'], dataJob[0]['pa3'], dataJob[0]['pr3'], dataJob[0]['n3'], dataJob[0]['b3'], dataJob[0]['pk3'] ],
+                              [ dataJob[0]['i4'], dataJob[0]['q4'], dataJob[0]['s4'], dataJob[0]['pg4'], dataJob[0]['pa4'], dataJob[0]['pr4'], dataJob[0]['n4'], dataJob[0]['b4'], dataJob[0]['pk4'] ],
+                              [ dataJob[0]['i5'], dataJob[0]['q5'], dataJob[0]['s5'], dataJob[0]['pg5'], dataJob[0]['pa5'], dataJob[0]['pr5'], dataJob[0]['n5'], dataJob[0]['b5'], dataJob[0]['pk5'] ],
+                              [ dataJob[0]['i6'], dataJob[0]['q6'], dataJob[0]['s6'], dataJob[0]['pg6'], dataJob[0]['pa6'], dataJob[0]['pr6'], dataJob[0]['n6'], dataJob[0]['b6'], dataJob[0]['pk6'] ],
+                              [ dataJob[0]['i7'], dataJob[0]['q7'], dataJob[0]['s7'], dataJob[0]['pg7'], dataJob[0]['pa7'], dataJob[0]['pr7'], dataJob[0]['n7'], dataJob[0]['b7'], dataJob[0]['pk7'] ]
+                          );
+              break;
+            default:  // 31
+              alert("Sorry! :( U can only add 7 Items/Ticket");
+          }
+          
+          genPDF(dataJob, dataTable);
+        })
+
+        
+        // generate pdf doc
+        const genPDF = (data, dataTable) => {
+
+          const doc = new window.jspdf.jsPDF({
+            orientation: "potrait",
+            unit: "mm",
+            format: [210, 297]
+          });
+
+          let day = new Date(data[0]['ord-dt']);
+
+
+        /*header*/
+          doc.setFont("helvetica", "bolditalic");
+          doc.setFontSize(20);
+            doc.text("Saraswaty Press Limited", 10, 10);
+
+          doc.setFont("helvetica", "italic");
+          doc.setFontSize(12);
+            doc.text("(A Government of West Bengal Enterprise)", 10, 17);
+          doc.setFont("helvetica", "normal");
+            doc.text("11, B. T. Road, Kolkata – 700056", 10, 23);
+
+          doc.setFont("times", "bolditalic");
+          doc.setFontSize(16);
+            doc.text("Job Ticket", 160, 10);
+        /*end header*/
+
+        /*body*/
+          doc.setFont("helvetica", "bold");
+          doc.setFontSize(10);
+            doc.text("______________________________________________________________________________________________", 10, 25);
+
+          doc.setFont("helvetica", "normal");
+          doc.setFontSize(11);
+            doc.text("Job No. : ", 10, 32);
+          doc.setFont("helvetica", "bold");
+            doc.text( data[0]['job-no'], 27, 32 );
+
+          doc.setFont("helvetica", "normal");
+            doc.text("Order Date: ", 80, 32);
+          doc.setFont("helvetica", "bold");
+            doc.text(new Date(data[0]['ord-dt']).toLocaleString('en-GB', {dateStyle: 'short'}), 103, 32);
+
+          doc.setFont("helvetica", "normal");
+            doc.text("Delivery Date:", 145, 32);
+          doc.setFont("helvetica", "bold");
+            doc.text(new Date(data[0]['del-dt']).toLocaleString('en-GB', {dateStyle: 'short'}), 173, 32);
+
+
+          doc.setFont("helvetica", "bold");
+          doc.setFontSize(10);
+            doc.text("______________________________________________________________________________________________", 10, 35);
+
+          doc.setFont("helvetica", "normal");
+          doc.setFontSize(11);
+            doc.text("Cust. Name: ", 10, 42);
+          doc.setFont("helvetica", "bold");
+            doc.text(data[0]['cust-nm'], 33, 42);
+          doc.setFont("helvetica", "normal");
+            doc.text("Cust. Number: ", 145, 42);
+          doc.setFont("helvetica", "bold");
+            doc.text(data[0]['cust-no'], 172, 42);
+          doc.setFont("helvetica", "normal");
+            doc.text("Cust. Address: ", 10, 50);
+          doc.setFont("helvetica", "bold");
+            doc.text(data[0]['cust-add'], 37, 50);
+
+          doc.setFont("helvetica", "normal");
+            doc.text("Contact Person Name: ", 10, 58);
+          doc.setFont("helvetica", "bold");
+            doc.text(data[0]['cont-per'], 52, 58);
+
+          doc.setFont("helvetica", "normal");
+            doc.text("Cont. Number: ", 145, 58);
+          doc.setFont("helvetica", "bold");
+            doc.text(data[0]['cont-per-no'], 172, 58);
+
+          doc.setFont("helvetica", "normal");
+            doc.text("Delivery Address: ", 10, 66);
+          doc.setFont("helvetica", "bold");
+            doc.text(data[0]['del-add'], 42, 66);
+
+          doc.setFont("helvetica", "normal");
+            doc.text("Delivery Contact Person: ", 10, 74);
+          doc.setFont("helvetica", "bold");
+            doc.text(data[0]['del-cont-per'], 54, 74);
+
+          doc.setFont("helvetica", "normal");
+            doc.text("Cont. Number: ", 145, 74);
+          doc.setFont("helvetica", "bold");
+            doc.text(data[0]['del-cont-per-no'], 172, 74);
+
+          doc.setFont("helvetica", "normal");
+            doc.text("Purchase Order No.: ", 10, 82);
+          doc.setFont("helvetica", "bold");
+            doc.text(data[0]['purord-no'], 48, 82);
+
+          doc.setFont("helvetica", "normal");
+            doc.text("Purchase Order Date: ", 135, 82);
+          doc.setFont("helvetica", "bold");
+            doc.text(new Date(data[0]['purord-dt']).toLocaleString('en-GB', {dateStyle: 'short'}), 175, 82);
+
+            
+          doc.setFont("helvetica", "normal");
+            doc.text("Estimate No.: ", 10, 90);
+          doc.setFont("helvetica", "bold");
+            doc.text(data[0]['est-no'], 35, 90);
+
+          doc.setFont("helvetica", "normal");
+            doc.text("Estimate Date: ", 75, 90);
+          doc.setFont("helvetica", "bold");
+            doc.text(new Date(data[0]['est-dt']).toLocaleString('en-GB', {dateStyle: 'short'}), 103, 90);
+
+          doc.setFont("helvetica", "normal");
+            doc.text("Sales Executive: ", 135, 90);
+          doc.setFont("helvetica", "bold");
+            doc.text(data[0]['sls-exe'], 165, 90);
+
+
+          doc.setFontSize(10);
+            doc.text("______________________________________________________________________________________________", 10, 92);
+
+          doc.setFontSize(11);
+            let text0 = `Job Title: ${data[0]['job-title']}`;
+            doc.text(text0, (doc.internal.pageSize.width / 2), 98, {align: 'center'}); // [210/2]
+
+
+          doc.setFontSize(10);
+            doc.text("______________________________________________________________________________________________", 10, 100);
+
+          doc.setFontSize(12);
+            let text1 = "JOB DESCRIPTION WITH PRINTING, BINDING & OTHER INSTRUCTIONS";
+            doc.text(text1, (doc.internal.pageSize.width / 2), 108, {align: 'center'});
+        
+
+          /* data table */
+            let cols = ['Item', 'Qty (Pcs.)', 'Size', 'Pgs', 'Paper', 'Printing', 'Numbering', 'Binding', 'Packing'];
+
+            doc.autoTable({
+              margin: { top: 110 },
+              head: [ cols ],
+              body: dataTable
+            });
+
+          /* footer info. */
+          doc.setFontSize(10);
+            doc.text("______________________________________________________________________________________________", 10, 270);
+
+            //output .pdf file
+            doc.save("two-by-four.pdf");
+        }
+        
+
+      });
+    </script>
+  </body>
+</html>
