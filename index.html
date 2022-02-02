@@ -309,7 +309,7 @@
 
           let dataTable = [];
 
-          //dataLength : 31-1 item entry, 36-2-item entry,... 41, 46, 51, 56, 61
+          //dataLength : 31-1 item entry, 40-2-item entry,... 46, 51, 56, 61
           switch(dataLength) {
             case 31:
               dataTable.push( [ dataJob[0]['i1'], dataJob[0]['q1'], dataJob[0]['s1'], dataJob[0]['pg1'], dataJob[0]['pa1'], dataJob[0]['pr1'], dataJob[0]['n1'], dataJob[0]['b1'], dataJob[0]['pk1'] ] );
@@ -526,9 +526,62 @@
             doc.text("______________________________________________________________________________________________", 10, 270);
 
             //output .pdf file
-            doc.save("two-by-four.pdf");
+            /*
+            ------------------------
+            |*| check validation |*|
+            ------------------------
+                validation field list      check validation
+              -------------------------------------------------------------------
+                1. data[0]['job-no']  => should not left blank
+                2. data[0]['ord-dt']  => should not left blank
+                3. data[0]['del-dt']  => should not left blank
+                4. data[0]['del-dt'] should always be a future data[0]['ord-dt']
+            */
+            if( data[0]['job-no'] ){
+              if( compareDate( data[0]['ord-dt'], data[0]['del-dt'] ) == true ){
+                doc.save(`${data[0]['job-no']}.pdf`);
+                window.location.reload();
+              }else{
+                alert("Order Date & Delivery Date Mismatch :(");
+              }
+            }else{
+              alert('Provide Job No!');
+            }
+
         }
-        
+
+
+        //compare 2 date
+        const compareDate = (d1, d2) => {
+          if( new Date(d1) < new Date(d2) ){
+            return true;
+          }else if( new Date(d1) > new Date(d2) ){
+            return false;
+          }else{
+            return false;
+          }
+        }
+
+/*
+  //justify
+
+  doc.setFont("helvetica", "normal");
+  doc.setFontSize(10);
+    let text3 = "The Quick Brown Fox Jumps Over The Lazy Dog.The Quick Brown Fox Jumps Over The Lazy Dog.The Quick Brown Fox Jumps Over The Lazy Dog.The Quick Brown Fox Jumps Over The Lazy Dog.The Quick Brown Fox Jumps Over The Lazy Dog.The Quick Brown Fox Jumps Over The Lazy Dog.The Quick Brown Fox Jumps Over The Lazy Dog.The Quick Brown Fox Jumps Over The Lazy Dog.The Quick Brown Fox Jumps Over The Lazy Dog.The Quick Brown Fox Jumps Over The Lazy Dog.The Quick Brown Fox Jumps Over The Lazy Dog.The Quick Brown Fox Jumps Over The Lazy Dog.The Quick Brown Fox Jumps Over The Lazy Dog.The Quick Brown Fox Jumps Over The Lazy Dog.The Quick Brown Fox Jumps Over The Lazy Dog.The Quick Brown Fox Jumps Over The Lazy Dog.The Quick Brown Fox Jumps Over The Lazy Dog.The Quick Brown Fox Jumps Over The Lazy Dog.The Quick Brown Fox Jumps Over The Lazy Dog.The Quick Brown Fox Jumps Over The Lazy Dog.The Quick Brown Fox Jumps Over The Lazy Dog.The Quick Brown Fox Jumps Over The Lazy Dog.The Quick Brown Fox Jumps Over The Lazy Dog.";
+    doc.text(text3, 10, (210-15), {align: 'justify'});
+
+
+  doc.setFont("helvetica", "normal");
+  doc.setFontSize(10);
+    var para='The Quick Brown Fox Jumps Over The Lazy Dog. The Quick Brown Fox Jumps Over The Lazy Dog. The Quick Brown Fox Jumps Over The Lazy Dog. The Quick Brown Fox Jumps Over The Lazy Dog. The Quick Brown Fox Jumps Over The Lazy Dog. The Quick Brown Fox Jumps Over The Lazy Dog. The Quick Brown Fox Jumps Over The Lazy Dog. The Quick Brown Fox Jumps Over The Lazy Dog. The Quick Brown Fox Jumps Over The Lazy Dog. The Quick Brown Fox Jumps Over The Lazy Dog. The Quick Brown Fox Jumps Over The Lazy Dog. The Quick Brown Fox Jumps Over The Lazy Dog. The Quick Brown Fox Jumps Over The Lazy Dog. The Quick Brown Fox Jumps Over The Lazy Dog. The Quick Brown Fox Jumps Over The Lazy Dog. The Quick Brown Fox Jumps Over The Lazy Dog. The Quick Brown Fox Jumps Over The Lazy Dog. The Quick Brown Fox Jumps Over The Lazy Dog. The Quick Brown Fox Jumps Over The Lazy Dog. The Quick Brown Fox Jumps Over The Lazy Dog. The Quick Brown Fox Jumps Over The Lazy Dog. The Quick Brown Fox Jumps Over The Lazy Dog. The Quick Brown Fox Jumps Over The Lazy Dog. ';
+    var pageWidth = 210;
+    var ParaWidth=75; // pageWidth*0.85 para width will 85% of the page width.
+    var LeftMargin=10; //(pageWidth-ParaWidth)/2; Left margin will be half of the remaining space
+    var TopMargin=150; /According to your requirement
+    var lines = doc.splitTextToSize(para, ParaWidth);
+    doc.text( lines, LeftMargin, TopMargin, { maxWidth: 120 });
+
+  */
 
       });
     </script>
