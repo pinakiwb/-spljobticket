@@ -16,8 +16,7 @@
     <div class="alert alert-success mt-2 ml-1 mr-1" style="padding: 0 !important">
       <div class="d-flex">
         <div class="mt-2">
-          <!-- <img src="https://drive.google.com/uc?id=1YQ0rVJgTdieVptwMXJEHJsM2vYAltdT_" width="60" alt="" /> -->
-          <img src="./img/logo.png" width="60" alt="" />
+          <img src="./img/logo.png" width="60" alt="logoSPL" />
         </div>
         <div>
           <p class="" style="margin-bottom: 0 !important">
@@ -247,8 +246,8 @@
 
         //ADD 1 NEW ROW
         const createRow = () => {
-          if(lineNo >= 8){
-            alert("Sorry! :( U can only add 7 Items/Ticket");
+          if(lineNo >= 7){
+            alert("Sorry! :( U can only add 6 Items/Ticket");
           }else{
             markup = `<tr> 
                         <td> <input type="text" class="form-control form-control-sm" id="i${lineNo}" /> </td>
@@ -369,7 +368,7 @@
                               [ dataJob[0]['i7'], dataJob[0]['q7'], dataJob[0]['s7'], dataJob[0]['pg7'], dataJob[0]['pa7'], dataJob[0]['pr7'], dataJob[0]['n7'], dataJob[0]['b7'], dataJob[0]['pk7'] ]
                           );
               break;
-            default:  // 31
+            default:  // 
               alert("Sorry! :( U can only add 7 Items/Ticket");
           }
           
@@ -515,40 +514,68 @@
 
           /* data table */
             let cols = ['Item', 'Qty (Pcs.)', 'Size', 'Pgs', 'Paper', 'Printing', 'Numbering', 'Binding', 'Packing'];
-
             doc.autoTable({
               margin: { top: 110 },
               head: [ cols ],
               body: dataTable
             });
 
+            let cols1 =  [  'Heading' ];
+            doc.autoTable({
+              margin: { top: 215 },
+              headStyles: { valign: 'middle', halign : 'center' },
+              body: [
+                       [`Typesetting by : ${data[0]['typeBy']}`],
+                       [`Proof Reading by: ${data[0]['proofBy']}`],
+                       [`Art Work by : ${data[0]['artworkBy']}`],
+                       [`Text Paper to be provided by : ${data[0]['textBy']}`],
+                    ]
+            });
+
+
+
+
+
           /* footer info. */
           doc.setFontSize(10);
             doc.text("______________________________________________________________________________________________", 10, 270);
 
+          doc.setFont("times", "italic");
+          doc.setFontSize(6);
+          doc.text('© Confidential Team, SPL 2022', (doc.internal.pageSize.width / 2), 275, {align: 'center'});
+
             //output .pdf file
             /*
-            ------------------------
-            |*| check validation |*|
-            ------------------------
-                validation field list      check validation
-              -------------------------------------------------------------------
-                1. data[0]['job-no']  => should not left blank
-                2. data[0]['ord-dt']  => should not left blank
-                3. data[0]['del-dt']  => should not left blank
-                4. data[0]['del-dt'] should always be a future data[0]['ord-dt']
+              ------------------------
+              |*| check validation |*|
+              ------------------------
+                  validation field list      check validation
+                -------------------------------------------------------------------
+                  1. data[0]['job-no']  => should not left blank
+                  2. data[0]['ord-dt']  => should not left blank
+                  3. data[0]['del-dt']  => should not left blank
+                  4. data[0]['del-dt'] should always be a future data[0]['ord-dt']
             */
-            if( data[0]['job-no'] ){
+
+            if( data[0]['ord-dt'] && data[0]['del-dt'] ){
               if( compareDate( data[0]['ord-dt'], data[0]['del-dt'] ) == true ){
-                doc.save(`${data[0]['job-no']}.pdf`);
-                window.location.reload();
+                //if jobNo and orderDt both received then file name will be
+                // jobNo_orderDt.pdf
+                if( data[0]['job-no'] ){
+                  let fnm = new Date(data[0]['ord-dt']).toLocaleString('en-GB', {dateStyle: 'short'});
+                  doc.save(`${data[0]['job-no']}_${fnm}.pdf`);
+                  window.location.reload();
+                }else{ //if jobNo not found then file name will be [orderDt.pdf]
+                  let fnm = new Date(data[0]['ord-dt']).toLocaleString('en-GB', {dateStyle: 'short'});
+                  doc.save(`${fnm}.pdf`);
+                  window.location.reload();
+                }
               }else{
                 alert("Order Date & Delivery Date Mismatch :(");
               }
             }else{
-              alert('Provide Job No!');
+              alert("Empty Order Date / Delivery Date");
             }
-
         }
 
 
@@ -562,27 +589,6 @@
             return false;
           }
         }
-
-/*
-  //justify
-
-  doc.setFont("helvetica", "normal");
-  doc.setFontSize(10);
-    let text3 = "The Quick Brown Fox Jumps Over The Lazy Dog.The Quick Brown Fox Jumps Over The Lazy Dog.The Quick Brown Fox Jumps Over The Lazy Dog.The Quick Brown Fox Jumps Over The Lazy Dog.The Quick Brown Fox Jumps Over The Lazy Dog.The Quick Brown Fox Jumps Over The Lazy Dog.The Quick Brown Fox Jumps Over The Lazy Dog.The Quick Brown Fox Jumps Over The Lazy Dog.The Quick Brown Fox Jumps Over The Lazy Dog.The Quick Brown Fox Jumps Over The Lazy Dog.The Quick Brown Fox Jumps Over The Lazy Dog.The Quick Brown Fox Jumps Over The Lazy Dog.The Quick Brown Fox Jumps Over The Lazy Dog.The Quick Brown Fox Jumps Over The Lazy Dog.The Quick Brown Fox Jumps Over The Lazy Dog.The Quick Brown Fox Jumps Over The Lazy Dog.The Quick Brown Fox Jumps Over The Lazy Dog.The Quick Brown Fox Jumps Over The Lazy Dog.The Quick Brown Fox Jumps Over The Lazy Dog.The Quick Brown Fox Jumps Over The Lazy Dog.The Quick Brown Fox Jumps Over The Lazy Dog.The Quick Brown Fox Jumps Over The Lazy Dog.The Quick Brown Fox Jumps Over The Lazy Dog.";
-    doc.text(text3, 10, (210-15), {align: 'justify'});
-
-
-  doc.setFont("helvetica", "normal");
-  doc.setFontSize(10);
-    var para='The Quick Brown Fox Jumps Over The Lazy Dog. The Quick Brown Fox Jumps Over The Lazy Dog. The Quick Brown Fox Jumps Over The Lazy Dog. The Quick Brown Fox Jumps Over The Lazy Dog. The Quick Brown Fox Jumps Over The Lazy Dog. The Quick Brown Fox Jumps Over The Lazy Dog. The Quick Brown Fox Jumps Over The Lazy Dog. The Quick Brown Fox Jumps Over The Lazy Dog. The Quick Brown Fox Jumps Over The Lazy Dog. The Quick Brown Fox Jumps Over The Lazy Dog. The Quick Brown Fox Jumps Over The Lazy Dog. The Quick Brown Fox Jumps Over The Lazy Dog. The Quick Brown Fox Jumps Over The Lazy Dog. The Quick Brown Fox Jumps Over The Lazy Dog. The Quick Brown Fox Jumps Over The Lazy Dog. The Quick Brown Fox Jumps Over The Lazy Dog. The Quick Brown Fox Jumps Over The Lazy Dog. The Quick Brown Fox Jumps Over The Lazy Dog. The Quick Brown Fox Jumps Over The Lazy Dog. The Quick Brown Fox Jumps Over The Lazy Dog. The Quick Brown Fox Jumps Over The Lazy Dog. The Quick Brown Fox Jumps Over The Lazy Dog. The Quick Brown Fox Jumps Over The Lazy Dog. ';
-    var pageWidth = 210;
-    var ParaWidth=75; // pageWidth*0.85 para width will 85% of the page width.
-    var LeftMargin=10; //(pageWidth-ParaWidth)/2; Left margin will be half of the remaining space
-    var TopMargin=150; /According to your requirement
-    var lines = doc.splitTextToSize(para, ParaWidth);
-    doc.text( lines, LeftMargin, TopMargin, { maxWidth: 120 });
-
-  */
 
       });
     </script>
