@@ -16,7 +16,8 @@
     <div class="alert alert-success mt-2 ml-1 mr-1" style="padding: 0 !important">
       <div class="d-flex">
         <div class="mt-2">
-          <img src="./img/logo.png" width="60" alt="logoSPL" />
+          <!-- <img src="https://drive.google.com/uc?id=1YQ0rVJgTdieVptwMXJEHJsM2vYAltdT_" width="60" alt="" /> -->
+          <img src="./img/logo.png" width="60" alt="" />
         </div>
         <div>
           <p class="" style="margin-bottom: 0 !important">
@@ -266,7 +267,10 @@
           }
         }
 
+
       $(document).ready( function () {
+
+    
 
         //CREATE AN ARRAY OF JOB-TICKET
         $('#saveJobTicket').on('click', function(){
@@ -368,10 +372,9 @@
                               [ dataJob[0]['i7'], dataJob[0]['q7'], dataJob[0]['s7'], dataJob[0]['pg7'], dataJob[0]['pa7'], dataJob[0]['pr7'], dataJob[0]['n7'], dataJob[0]['b7'], dataJob[0]['pk7'] ]
                           );
               break;
-            default:  // 
+            default:  // 31
               alert("Sorry! :( U can only add 7 Items/Ticket");
           }
-          
           genPDF(dataJob, dataTable);
         })
 
@@ -514,25 +517,28 @@
 
           /* data table */
             let cols = ['Item', 'Qty (Pcs.)', 'Size', 'Pgs', 'Paper', 'Printing', 'Numbering', 'Binding', 'Packing'];
+
             doc.autoTable({
               margin: { top: 110 },
               head: [ cols ],
               body: dataTable
-            });
+            });    
 
             let cols1 =  [  'Heading' ];
             doc.autoTable({
               margin: { top: 215 },
-              headStyles: { valign: 'middle', halign : 'center' },
+              headStyles: {
+                              valign: 'middle',
+                              halign : 'center'
+                          },
               body: [
-                       [`Typesetting by : ${data[0]['typeBy']}`],
-                       [`Proof Reading by: ${data[0]['proofBy']}`],
-                       [`Art Work by : ${data[0]['artworkBy']}`],
-                       [`Text Paper to be provided by : ${data[0]['textBy']}`],
-                       [`Cover Paper to be provided by : ${data[0]['coverBy']}`]
+                          [`Typesetting by : ${data[0]['typeBy']}`],
+                          [`Proof Reading by: ${data[0]['proofBy']}`],
+                          [`Art Work by : ${data[0]['artworkBy']}`],
+                          [`Text Paper to be provided by : ${data[0]['textBy']}`],
+                          [`Cover Paper to be provided by : ${data[0]['coverBy']}`]
                     ]
             });
-
 
 
           /* footer info. */
@@ -562,12 +568,98 @@
                 // jobNo_orderDt.pdf
                 if( data[0]['job-no'] ){
                   let fnm = new Date(data[0]['ord-dt']).toLocaleString('en-GB', {dateStyle: 'short'});
-                  doc.save(`${data[0]['job-no']}_${fnm}.pdf`);
-                  window.location.reload();
+                  /* ******* save data******* */
+                  let scriptURL = "https://script.google.com/macros/s/AKfycbyyFvRm7oNceXi6Oo1KaZPankq_6WFze43UcOuhRQz_hRypsZDF/exec";
+                  let fd = new FormData();
+                      fd.append('jobNo',        data[0]['job-no']);
+                      fd.append('orderDate',    data[0]['ord-dt']);
+                      fd.append('deliveryDate', data[0]['del-dt']);
+
+                      fd.append('customerName',    data[0]['cust-nm']);
+                      fd.append('customerNumber',  data[0]['cust-no']);
+                      fd.append('customerAddress', data[0]['cust-add']);
+
+                      fd.append('contactPerson',       data[0]['cont-per']);
+                      fd.append('contactPersonNumber', data[0]['cont-per-no']);
+
+                      fd.append('deliveryAddress',       data[0]['del-add']);
+                      fd.append('deliveryContactPerson', data[0]['del-cont-per']);
+                      fd.append('deliveryContactNumber', data[0]['del-cont-per-no']);
+
+                      fd.append('purchaseOrdNo',   data[0]['purord-no']);
+                      fd.append('purchaseOrdDate', data[0]['purord-dt']);
+
+                      fd.append('estimateNo',     data[0]['est-no']);
+                      fd.append('estimateDt',     data[0]['est-dt']);
+                      fd.append('salesExecutive', data[0]['sls-exe']);
+
+                      fd.append('jobTitle', data[0]['job-title']);
+
+                      fd.append('typeBy',    data[0]['typeBy']);
+                      fd.append('proofBy',   data[0]['proofBy']);
+                      fd.append('artworkBy', data[0]['artworkBy']);
+                      fd.append('textBy',    data[0]['textBy']);
+                      fd.append('coverBy',   data[0]['coverBy']);
+
+                    fetch(scriptURL, { method: 'POST', body: fd})
+                      .then( ctrret(fd) )
+                      .then( (response) => {
+                        if(response.ok == true){
+                          alert( "1 Job Ticket Successfully Inserted :)" );
+                          /* ******* save pdf ******* */
+                          doc.save(`${data[0]['job-no']}_${fnm}.pdf`);
+                          window.location.reload();
+                        }
+                      })
+                      .catch(error => console.error('Error!', error.message))
+
                 }else{ //if jobNo not found then file name will be [orderDt.pdf]
                   let fnm = new Date(data[0]['ord-dt']).toLocaleString('en-GB', {dateStyle: 'short'});
-                  doc.save(`${fnm}.pdf`);
-                  window.location.reload();
+                  /* ******* save data******* */
+                    let scriptURL = "https://script.google.com/macros/s/AKfycbyyFvRm7oNceXi6Oo1KaZPankq_6WFze43UcOuhRQz_hRypsZDF/exec";
+                    let fd = new FormData();
+                        fd.append('jobNo',        data[0]['job-no']);
+                        fd.append('orderDate',    data[0]['ord-dt']);
+                        fd.append('deliveryDate', data[0]['del-dt']);
+
+                        fd.append('customerName',    data[0]['cust-nm']);
+                        fd.append('customerNumber',  data[0]['cust-no']);
+                        fd.append('customerAddress', data[0]['cust-add']);
+
+                        fd.append('contactPerson',       data[0]['cont-per']);
+                        fd.append('contactPersonNumber', data[0]['cont-per-no']);
+
+                        fd.append('deliveryAddress',       data[0]['del-add']);
+                        fd.append('deliveryContactPerson', data[0]['del-cont-per']);
+                        fd.append('deliveryContactNumber', data[0]['del-cont-per-no']);
+
+                        fd.append('purchaseOrdNo',   data[0]['purord-no']);
+                        fd.append('purchaseOrdDate', data[0]['purord-dt']);
+
+                        fd.append('estimateNo',     data[0]['est-no']);
+                        fd.append('estimateDt',     data[0]['est-dt']);
+                        fd.append('salesExecutive', data[0]['sls-exe']);
+
+                        fd.append('jobTitle', data[0]['job-title']);
+
+                        fd.append('typeBy',    data[0]['typeBy']);
+                        fd.append('proofBy',   data[0]['proofBy']);
+                        fd.append('artworkBy', data[0]['artworkBy']);
+                        fd.append('textBy',    data[0]['textBy']);
+                        fd.append('coverBy',   data[0]['coverBy']);
+
+                      fetch(scriptURL, { method: 'POST', body: fd})
+                        .then( ctrret(fd) )
+                        .then( (response) => {
+                          if(response.ok == true){
+                            alert( "1 Job Ticket Successfully Inserted :)" );
+                            /* ******* save pdf ******* */
+                            doc.save(`${fnm}.pdf`);
+                            window.location.reload();
+                          }
+                        })
+                        .catch(error => console.error('Error!', error.message))
+                  /* ******* save data******* */
                 }
               }else{
                 alert("Order Date & Delivery Date Mismatch :(");
@@ -586,6 +678,14 @@
             return false;
           }else{
             return false;
+          }
+        }
+
+
+        function ctrret(fData){
+          for(let [key, value] of fData) {
+            fData.delete(key);
+            fData.delete(value);
           }
         }
 
